@@ -70,7 +70,7 @@ class Cli {
           this.createCar();
         } else if (answers.vehicleType === 'Truck') {
           this.createTruck();
-        } else if (answers.vehicleType === 'Motobike') {
+        } else if (answers.vehicleType === 'Motorbike') {
           this.createMotorbike();
         }
         // TODO: add statements to create a truck or motorbike if the user selects the respective vehicle type 👍
@@ -295,7 +295,7 @@ class Cli {
           console.log(`The truck ${truck.vin} cannot tow itself. Please select another vehicle.`);
           this.findVehicleToTow(truck);
         } else {
-          console.log(`The truck ${truck.vin} is towing the vehicle ${selectedVehicle.vin}.`);
+          console.log(`The ${truck.make} ${truck.model} is towing the ${selectedVehicle.model}.`);
           this.performActions();
         }
         // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
@@ -403,7 +403,9 @@ class Cli {
           const selectedVehicle = this.vehicles.find(vehicle => vehicle.vin === this.selectedVehicleVin);
           if (selectedVehicle instanceof Motorbike) {
             selectedVehicle.wheelie();
-            return;
+          
+          } else {
+            console.log('You can only perform a wheelie on a motorbike.');
           }
         }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
